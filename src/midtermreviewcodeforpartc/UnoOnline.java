@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package midtermreviewcodeforpartc;
-
 import java.util.Scanner;
 
 /**
@@ -14,7 +13,7 @@ import java.util.Scanner;
  * of possible users. To be used as the beginning code for MidtermReview C.
  * @author dancye, 2019
  */
-public class UnoOnline 
+public class UnoOnline extends PasswordValidator
 {
     private User users[] = new User[100];//room for 100 online players!
      
@@ -48,22 +47,20 @@ public class UnoOnline
         {
             System.out.println("Passwords must have at least 8 characters");
             System.out.println("Passwords must have at least one special character");
-            System.out.println("Please enter your desired password:"); 
-            
+            System.out.println("Please enter your desired password:");
             password = sc.nextLine();
-            int specialCharCount=0;
-            //iterate over each character to see if it is a special character
-            for(int i=0;i<password.length(); i++)
-            {
-                if(!(Character.isLetterOrDigit(password.charAt(i))))
-                {
-                    //now we know there is at least one special character
-                    specialCharCount++;
-                }
-            }
-            if(specialCharCount>0 &&password.length()>7)
-            {
-                validPassword=true;
+            
+            PasswordValidator pv = new PasswordValidator();
+            if(pv.getLength() != true) {
+                System.out.println("Invalid Password. Less than 8 characters");
+            } else if(pv.getUpper() != true && pv.getSpecial() != true) {
+                System.out.println("Invalid Password.");
+            } else if(pv.getUpper() != true && pv.getLength() != true) {
+                System.out.println("Invalid Password. No upper case(s)");
+            } else if(pv.getSpecial() != true && pv.getLength() != true) {
+                System.out.println("Invalid Password. No special charater(s)");
+            } else {
+                System.out.println("Invalid Password. Does not meet all requirements.");
             }
         }//loop only ends when password is valid so now we create the User
         
