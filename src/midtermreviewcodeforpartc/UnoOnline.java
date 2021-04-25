@@ -53,10 +53,6 @@ public class UnoOnline extends PasswordValidator
             PasswordValidator pv = new PasswordValidator();
             if(pv.getLength() != true) {
                 System.out.println("Invalid Password. Less than 8 characters");
-            } else if(pv.getUpper() != true && pv.getSpecial() != true) {
-                System.out.println("Invalid Password.");
-            } else if(pv.getUpper() != true && pv.getLength() != true) {
-                System.out.println("Invalid Password. No upper case(s)");
             } else if(pv.getSpecial() != true && pv.getLength() != true) {
                 System.out.println("Invalid Password. No special charater(s)");
             } else {
