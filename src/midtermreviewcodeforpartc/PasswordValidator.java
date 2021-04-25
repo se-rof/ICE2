@@ -15,7 +15,6 @@ public class PasswordValidator {
     private String password;
     //Boolean Child Classes
     private Boolean length;
-    private Boolean upper;
     private Boolean special;
     
     //Constructors
@@ -24,7 +23,6 @@ public class PasswordValidator {
     public PasswordValidator(String passwrd, Boolean checkLength, Boolean checkUpper, Boolean checkSpecial) {
         this.password = passwrd;
         this.length = checkLength;  
-        this.upper = checkUpper;
         this.special = checkSpecial;
     }
     
@@ -34,9 +32,6 @@ public class PasswordValidator {
     }
     public void setLength(Boolean checkLength) {
         this.length = checkLength;
-    }
-    public void setUpper(Boolean checkUpper) {
-        this.upper = checkUpper;
     }
     public void setSpecial(Boolean checkSpecial) {
         this.special = checkSpecial;
@@ -57,18 +52,6 @@ public class PasswordValidator {
             return length;
         }
     } 
-    public Boolean getUpper() {
-        boolean upper = false;
-        for(int i = 0; i<password.length(); i++) {
-            //If the password contains an upper case
-            //Then upper returns true, else returns false
-            if(Character.isUpperCase(password.charAt(i))) {
-                upper = true;
-                
-            }
-        }
-        return upper;
-    }
     public Boolean getSpecial() {
         boolean special =false;
         for(int i = 0; i<password.length(); i++){
